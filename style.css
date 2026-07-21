@@ -37,7 +37,7 @@ body {
     linear-gradient(var(--paper-2) 1px, transparent 1px) 0 0 / 100% 28px,
     var(--paper);
   color: var(--ink);
-  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  font-family: "IBM Plex Sans", "Noto Sans JP", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
