@@ -17,8 +17,8 @@
     { file: "wed02sep.html", short: "WED 02", color: "var(--wed)" },
   ];
 
-  const START_HOUR = 8;   // grid starts 08:00
-  const END_HOUR = 23;    // grid ends 23:00
+  const START_HOUR = 7;   // grid starts 07:00
+  const END_HOUR = 24;    // grid ends 24:00
   const PX_PER_MIN = 1;   // 60px per hour — keep in sync with style.css .ruler-hour height
 
   function toMinutes(hhmm) {
