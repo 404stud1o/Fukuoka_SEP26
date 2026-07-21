@@ -167,7 +167,7 @@
       delBtn.type = "button";
       delBtn.title = "Delete";
       delBtn.textContent = "\u2715";
-      delBtn.addEventListener("click", () => onDelete(ev.id));
+      delBtn.addEventListener("click", () => onEdit(ev.id));
       actions.appendChild(editBtn);
       actions.appendChild(delBtn);
       card.appendChild(actions);

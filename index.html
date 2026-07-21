@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fukuoka Trip Schedule</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fukuoka Trip Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <h1 class="page-title"><span class="day-tick"></span>Trip Schedule</h1>
+    <h1 class="page-title"><span class="day-tick"></span>Trip Schedule</h1>
 
-  <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
+    <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
 
-  <div class="home-list" id="homeList"></div>
+    <div class="home-list" id="homeList"></div>
 
-  <footer class="foot">福岡 FUKUOKA &middot; 2026年夏季 SUMMER 2026</footer>
-</div>
+    <footer class="foot">福岡 FUKUOKA &middot; 2026／夏 SUMMER 2026</footer>
+  </div>
 
-<script src="schedule.js"></script>
-<script>
-  TripSchedule.renderNav("index.html");
+  <script src="schedule.js"></script>
+  <script>
+    TripSchedule.renderNav("index.html");
 
-  const meta = {
-    "fri28aug.html": { full: "FRIDAY", date: "28", month: "AUG" },
-    "sat29aug.html": { full: "SATURDAY", date: "29", month: "AUG" },
-    "sun30aug.html": { full: "SUNDAY", date: "30", month: "AUG" },
-    "mon31aug.html": { full: "MONDAY", date: "31", month: "AUG" },
-    "tue01sep.html": { full: "TUESDAY", date: "01", month: "SEP" },
-    "wed02sep.html": { full: "WEDNESDAY", date: "02", month: "SEP" },
-  };
+    const meta = {
+      "fri28aug.html": { full: "FRIDAY", date: "28", month: "AUG" },
+      "sat29aug.html": { full: "SATURDAY", date: "29", month: "AUG" },
+      "sun30aug.html": { full: "SUNDAY", date: "30", month: "AUG" },
+      "mon31aug.html": { full: "MONDAY", date: "31", month: "AUG" },
+      "tue01sep.html": { full: "TUESDAY", date: "01", month: "SEP" },
+      "wed02sep.html": { full: "WEDNESDAY", date: "02", month: "SEP" },
+    };
 
-  const list = document.getElementById("homeList");
-  TripSchedule.DAYS.forEach((d) => {
-    const m = meta[d.file];
-    const a = document.createElement("a");
-    a.href = d.file;
-    a.className = "home-card";
-    a.style.setProperty("--card-color", d.color);
-    a.innerHTML =
-      '<div class="hc-day">' + m.full + '</div>' +
-      '<div class="hc-date">' + m.date + ' ' + m.month + '</div>';
-    list.appendChild(a);
-  });
-</script>
+    const list = document.getElementById("homeList");
+    TripSchedule.DAYS.forEach((d) => {
+      const m = meta[d.file];
+      const a = document.createElement("a");
+      a.href = d.file;
+      a.className = "home-card";
+      a.style.setProperty("--card-color", d.color);
+      a.innerHTML =
+        '<div class="hc-day">' + m.full + '</div>' +
+        '<div class="hc-date">' + m.date + ' ' + m.month + '</div>';
+      list.appendChild(a);
+    });
+  </script>
 </body>
 </html>

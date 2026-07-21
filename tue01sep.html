@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TUE 01 SEP — Fukuoka Trip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUE 01 SEP — Fukuoka Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <h1 class="page-title" style="--day-color: var(--tue);">
-    <span class="day-tick"></span>TUESDAY 01 SEPTEMBER
-  </h1>
+    <h1 class="page-title" style="--day-color: var(--tue);">
+      <span class="day-tick"></span>TUESDAY 01 SEPTEMBER
+    </h1>
 
-  <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
+    <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
 
-  <section class="schedule-card">
-    <div class="schedule-grid">
-      <div class="ruler" id="ruler"></div>
-      <div class="track">
-        <div class="events-layer" id="eventsLayer"></div>
+    <section class="schedule-card">
+      <div class="schedule-grid">
+        <div class="ruler" id="ruler"></div>
+        <div class="track">
+          <div class="events-layer" id="eventsLayer"></div>
+        </div>
       </div>
-    </div>
-  </section>
-  
-  <footer class="foot">福岡 FUKUOKA &middot; 2026年夏季 SUMMER 2026</footer>
-</div>
+    </section>
+    
+    <footer class="foot">福岡 FUKUOKA &middot; 2026／夏 SUMMER 2026</footer>
+  </div>
 
-<script src="schedule.js"></script>
-<script>
-  const EVENTS_DEFAULT = [
-    { title: "", start: "", end: "", location: "", mapsUrl: "" },
-  ];
+  <script src="schedule.js"></script>
+  <script>
+    const EVENTS_DEFAULT = [
+      { title: "", start: "", end: "", location: "", mapsUrl: "" },
+    ];
 
-  window.TripSchedule.init({
-    file: "tue01sep.html",
-    color: "var(--tue)",
-    defaults: EVENTS_DEFAULT,
-  });
-</script>
+    window.TripSchedule.init({
+      file: "tue01sep.html",
+      color: "var(--tue)",
+      defaults: EVENTS_DEFAULT,
+    });
+  </script>
 </body>
 </html>

@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUN 30 AUG — Fukuoka Trip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUN 30 AUG — Fukuoka Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <h1 class="page-title" style="--day-color: var(--sun);">
-    <span class="day-tick"></span>SUNDAY 30 AUGUST
-  </h1>
+    <h1 class="page-title" style="--day-color: var(--sun);">
+      <span class="day-tick"></span>SUNDAY 30 AUGUST
+    </h1>
 
-  <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
+    <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
 
-  <section class="schedule-card">
-    <div class="schedule-grid">
-      <div class="ruler" id="ruler"></div>
-      <div class="track">
-        <div class="events-layer" id="eventsLayer"></div>
+    <section class="schedule-card">
+      <div class="schedule-grid">
+        <div class="ruler" id="ruler"></div>
+        <div class="track">
+          <div class="events-layer" id="eventsLayer"></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="foot">福岡 FUKUOKA &middot; 2026年夏季 SUMMER 2026</footer>
-</div>
+    <footer class="foot">福岡 FUKUOKA &middot; 2026／夏 SUMMER 2026</footer>
+  </div>
 
-<script src="schedule.js"></script>
-<script>
-  const EVENTS_DEFAULT = [
-    { title: "", start: "", end: "", location: "", mapsUrl: "" },
-  ];
+  <script src="schedule.js"></script>
+  <script>
+    const EVENTS_DEFAULT = [
+      { title: "Pick-up from Car Rental", start: "10:00", end: "10:45", location: "(TBC)", mapsUrl: "" },
+      { title: "Drive to 糸島 Itoshima", start: "10:45", end: "11:30", location: "", mapsUrl: "" },
+      { title: "Lunch (TBC)", start: "11:30", end: "13:00", location: "", mapsUrl: "" },
+      { title: "Attractions (TBC)", start: "13:00", end: "19:30", location: "", mapsUrl: "" },
+      { title: "Dinner: ", start: "19:30", end: "21:00", location: "浜焼き白浜家 牡蠣小屋・海鮮丼 バーベキュー Shirahamaya: Oyster, Sashimi & Grill", mapsUrl: "https://www.google.com/maps/place/Shirahamaya/@33.5886349,130.1114064,16.39z/data=!4m6!3m5!1s0x3541e79cc8d595c7:0x1e90bc325066c470!8m2!3d33.5896971!4d130.1078547!16s%2Fg%2F11f3rng6zj?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" },
+      { title: "Drive back to 福岡 Fukuoka", start: "21:00", end: "21:30", location: "", mapsUrl: "" },
+    ];
 
-  window.TripSchedule.init({
-    file: "sun30aug.html",
-    color: "var(--sun)",
-    defaults: EVENTS_DEFAULT,
-  });
-</script>
+    window.TripSchedule.init({
+      file: "sun30aug.html",
+      color: "var(--sun)",
+      defaults: EVENTS_DEFAULT,
+    });
+  </script>
 </body>
 </html>

@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MON 31 AUG — Fukuoka Trip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MON 31 AUG — Fukuoka Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <h1 class="page-title" style="--day-color: var(--mon);">
-    <span class="day-tick"></span>MONDAY 31 AUGUST
-  </h1>
+    <h1 class="page-title" style="--day-color: var(--sun);">
+      <span class="day-tick"></span>SUNDAY 30 AUGUST
+    </h1>
 
-  <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
+    <nav class="day-nav" id="dayNav" aria-label="Day navigation"></nav>
 
-  <section class="schedule-card">
-    <div class="schedule-grid">
-      <div class="ruler" id="ruler"></div>
-      <div class="track">
-        <div class="events-layer" id="eventsLayer"></div>
+    <section class="schedule-card">
+      <div class="schedule-grid">
+        <div class="ruler" id="ruler"></div>
+        <div class="track">
+          <div class="events-layer" id="eventsLayer"></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<script src="schedule.js"></script>
-<script>
-  const EVENTS_DEFAULT = [
-    { title: "", start: "", end: "", location: "", mapsUrl: "" },
-  ];
+    <footer class="foot">福岡 FUKUOKA &middot; 2026／夏 SUMMER 2026</footer>
+  </div>
 
-  window.TripSchedule.init({
-    file: "mon31aug.html",
-    color: "var(--mon)",
-    defaults: EVENTS_DEFAULT,
-  });
-</script>
+  <script src="schedule.js"></script>
+  <script>
+    const EVENTS_DEFAULT = [
+      { title: "Drive to 北九州 Kitakyushu", start: "10:00", end: "11:00", location: "", mapsUrl: "" },
+      { title: "Outlet Day", start: "11:00", end: "18:00", location: "THE OUTLETS KITAKYUSHU, イオンモール八幡東 Aeon Mall Yahatahigashi", mapsUrl: "https://www.google.com/maps/place/THE+OUTLETS+KITAKYUSHU/@33.8725004,130.8112294,17.51z/data=!4m14!1m7!3m6!1s0x3543c7d46d02f86d:0x2b11ae58fc15d12f!2sTHE+OUTLETS+KITAKYUSHU!8m2!3d33.873417!4d130.8116498!16s%2Fg%2F11sn_5nnbx!3m5!1s0x3543c7d46d02f86d:0x2b11ae58fc15d12f!8m2!3d33.873417!4d130.8116498!16s%2Fg%2F11sn_5nnbx?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" },
+      { title: "Drive back to 福岡 Fukuoka", start: "18:00", end: "19:00", location: "", mapsUrl: "" },
+      { title: "Car Return", start: "19:00", end: "19:30", location: "(TBC)", mapsUrl: "" },
+    ];
+
+    window.TripSchedule.init({
+      file: "mon31aug.html",
+      color: "var(--mon)",
+      defaults: EVENTS_DEFAULT,
+    });
+  </script>
 </body>
 </html>
