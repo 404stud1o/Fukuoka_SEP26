@@ -27,47 +27,6 @@
     </div>
   </section>
 
-  <section class="entry-card">
-    <h2>New entry</h2>
-    <p class="entry-sub">Add an event to SUNDAY 30 AUGUST</p>
-    <form id="entryForm">
-      <div class="entry-grid">
-        <div class="field wide">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="e.g. Laser cutter induction" required>
-        </div>
-        <div class="field">
-          <label for="start">Start</label>
-          <input type="time" id="start" name="start" min="00:00" max="24:00" required>
-        </div>
-        <div class="field">
-          <label for="end">End</label>
-          <input type="time" id="end" name="end" min="00:00" max="24:00" required>
-        </div>
-        <div class="field wide">
-          <label for="location">Location</label>
-          <input type="text" id="location" name="location" placeholder="e.g. Workshop, Founder's Building">
-        </div>
-        <div class="field wide">
-          <label for="mapsUrl">Google Maps link</label>
-          <input type="url" id="mapsUrl" name="mapsUrl" placeholder="https://maps.app.goo.gl/...">
-        </div>
-      </div>
-      <div class="entry-actions">
-        <button type="submit" class="btn" id="submitBtn">Add to schedule</button>
-        <button type="button" class="btn secondary" id="cancelEditBtn" style="display:none;">Cancel edit</button>
-        <span class="form-msg" id="formMsg"></span>
-      </div>
-    </form>
-
-    <details class="export-panel">
-      <summary>Export code for this page</summary>
-      <p>Entries you add are saved to this browser only. To make them visible to everyone who visits the page, copy the code below and paste it over the <code>EVENTS_DEFAULT</code> list near the bottom of <code>sun30aug.html</code>, then commit the file to your GitHub Pages repo.</p>
-      <textarea id="exportArea" readonly spellcheck="false"></textarea>
-      <button type="button" class="btn secondary" id="exportBtn" style="margin-top:10px;">Copy code</button>
-    </details>
-  </section>
-
   <footer class="foot">福岡 FUKUOKA &middot; 2026年夏季 SUMMER 2026</footer>
 </div>
 
