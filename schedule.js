@@ -39,10 +39,17 @@
 
   // ---------------- Nav ----------------
 
+
   function renderNav(currentFile) {
     const nav = document.getElementById("dayNav");
     if (!nav) return;
     nav.innerHTML = "";
+
+    const home = document.createElement("a");
+    home.href = "index.html";
+    home.className = "home";
+    home.textContent = "\u2302 HOME INFO";
+    nav.appendChild(home);
 
     DAYS.forEach((d) => {
       const a = document.createElement("a");
@@ -102,7 +109,7 @@
     if (!events.length) {
       const note = document.createElement("div");
       note.className = "empty-note";
-      note.textContent = "NO ENTRIES YET — ADD ONE BELOW";
+      note.textContent = "NO ENTRIES YET";
       note.style.position = "absolute";
       note.style.top = "50%";
       note.style.left = "0";
