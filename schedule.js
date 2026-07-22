@@ -1,7 +1,7 @@
 /* ============================================================
-   Fukuoka Trip — Schedule engine
-   One config object per day page (window.PAGE) + this shared
-   file renders the ruler grid, nav bar, entry form and events.
+  Fukuoka Trip — Schedule engine
+  One config object per day page (window.PAGE) + this shared
+  file renders the ruler grid, nav bar, entry form and events.
    ============================================================ */
 
 (function () {
@@ -19,7 +19,7 @@
 
   const START_HOUR = 7;   // grid starts 07:00
   const END_HOUR = 24;    // grid ends 24:00
-  const PX_PER_MIN = 1;   // 60px per hour — keep in sync with style.css .ruler-hour height
+  const PX_PER_MIN = 2;   // 120px per hour — keep in sync with style.css .ruler-hour height
 
   function toMinutes(hhmm) {
     const [h, m] = hhmm.split(":").map(Number);
@@ -109,7 +109,7 @@
     if (!events.length) {
       const note = document.createElement("div");
       note.className = "empty-note";
-      note.textContent = "NO ENTRIES YET";
+      note.textContent = "-- NO ENTRIES --";
       note.style.position = "absolute";
       note.style.top = "50%";
       note.style.left = "0";
@@ -125,10 +125,10 @@
       const startMin = Math.max(toMinutes(ev.start) - START_HOUR * 60, 0);
       const endMin = Math.min(toMinutes(ev.end) - START_HOUR * 60, totalTrackHeight() / PX_PER_MIN);
       const top = startMin * PX_PER_MIN;
-      const height = Math.max((endMin - startMin) * PX_PER_MIN, 22);
+      const height = Math.max((endMin - startMin) * PX_PER_MIN, 16);
 
       const card = document.createElement("div");
-      card.className = "event" + (height < 40 ? " compact" : "");
+      card.className = "event" + (height < 30 ? " compact" : "");
       card.style.top = top + "px";
       card.style.height = height + "px";
       card.style.setProperty("--ev-color", dayColorVar);
@@ -157,7 +157,7 @@
           link.href = ev.mapsUrl;
           link.target = "_blank";
           link.rel = "noopener";
-          link.textContent = "Map \u2197";
+          link.textContent = "Google Maps \u2197";
           meta.appendChild(link);
         }
         card.appendChild(meta);
@@ -267,7 +267,7 @@
             mapsUrl: form.mapsUrl.value.trim(),
           };
           if (!data.title || !data.start || !data.end) {
-            msg.textContent = "Title, start and end are required.";
+            msg.textContent = "Title, start and end times are required.";
             return;
           }
           if (toMinutes(data.end) <= toMinutes(data.start)) {

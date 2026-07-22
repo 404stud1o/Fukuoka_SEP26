@@ -196,7 +196,7 @@ hr {
 
 .schedule-grid {
   display: grid;
-  grid-template-columns: 74px 1fr;
+  grid-template-columns: 60px 1fr;
 }
 
 .ruler {
@@ -206,8 +206,8 @@ hr {
 }
 
 .ruler-hour {
-  height: 60px;
-  border-bottom: 1px solid var(--line);
+  height: 120px;
+  border-bottom: 1.5px solid var(--line);
   position: relative;
 }
 
@@ -229,12 +229,12 @@ hr {
   /* half-hour tick */
   content: "";
   position: absolute;
-  top: 30px;
+  top: 60px;
   right: 0;
   width: 8px;
   height: 1px;
-  background: var(--brass);
-  opacity: 0.6;
+  background: var(--rule);
+  opacity: 0.5;
 }
 
 .track {
