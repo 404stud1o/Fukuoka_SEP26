@@ -100,6 +100,75 @@
     } catch (e) { /* storage unavailable — edits stay in-memory only */ }
   }
 
+  // ---------------- Audio ----------------
+  function initAudio() {
+    if (document.getElementById("bgAudioBtn")) return; // already added on this page
+
+    const KEY_TIME = "trip-audio-time";
+    const KEY_PLAYING = "trip-audio-playing";
+
+    const audio = document.createElement("audio");
+    audio.src = "terence_boundless_instr.mp3";
+    audio.loop = true;
+    audio.preload = "auto";
+    document.body.appendChild(audio);
+
+    const btn = document.createElement("button");
+    btn.id = "bgAudioBtn";
+    btn.className = "bg-audio-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Play Background Music: 林家謙 Terence Lam &middot; 夏日之子 Boundless");
+    btn.textContent = "\u266A";
+    document.body.appendChild(btn);
+
+    const savedTime = parseFloat(localStorage.getItem(KEY_TIME) || "0");
+    const wasPlaying = localStorage.getItem(KEY_PLAYING) === "1";
+
+    let userWantsPlaying = wasPlaying !== false && localStorage.getItem(KEY_PLAYING) !== "0";
+
+    audio.addEventListener("loadedmetadata", () => {
+      if (savedTime && savedTime < audio.duration) audio.currentTime = savedTime;
+      if (wasPlaying) audio.play().catch(() => { }); // works once the user has interacted with the site before
+    });
+
+    function tryAutoStart() {
+      if (userWantsPlaying && audio.paused) {
+        audio.play().catch(() => { });
+      }
+    }
+
+    ["click", "touchstart", "keydown"].forEach((evt) => {
+      document.addEventListener(evt, tryAutoStart, { once: true, passive: true });
+    });
+
+    btn.addEventListener("click", () => {
+      if (audio.paused) {
+        userWantsPlaying = true;
+        audio.play();
+      } else {
+        userWantsPlaying = false;
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener("play", () => {
+      btn.classList.add("playing");
+      localStorage.setItem(KEY_PLAYING, "1");
+    });
+    audio.addEventListener("pause", () => {
+      btn.classList.remove("playing");
+      localStorage.setItem(KEY_PLAYING, "0");
+    });
+
+    setInterval(() => {
+      if (!audio.paused) localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+    }, 2000);
+
+    window.addEventListener("pagehide", () => {
+      localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+    });
+  }
+
   // ---------------- Render events ----------------
 
   function renderEvents(layerEl, events, dayColorVar, onEdit, onDelete) {
@@ -254,56 +323,6 @@
         saveEvents(page.file, events);
         if (editingId === id) resetForm();
         paint();
-      }
-
-      function initAudio() {
-        if (document.getElementById("bgAudioBtn")) return; // already added on this page
-
-        const KEY_TIME = "trip-audio-time";
-        const KEY_PLAYING = "trip-audio-playing";
-
-        const audio = document.createElement("audio");
-        audio.src = "/terence_boundless.mp3";
-        audio.loop = true;
-        audio.preload = "auto";
-        document.body.appendChild(audio);
-
-        const btn = document.createElement("button");
-        btn.id = "bgAudioBtn";
-        btn.className = "bg-audio-btn";
-        btn.type = "button";
-        btn.setAttribute("aria-label", "Toggle background music");
-        btn.textContent = "\u266A";
-        document.body.appendChild(btn);
-
-        const savedTime = parseFloat(localStorage.getItem(KEY_TIME) || "0");
-        const wasPlaying = localStorage.getItem(KEY_PLAYING) === "1";
-
-        audio.addEventListener("loadedmetadata", () => {
-          if (savedTime && savedTime < audio.duration) audio.currentTime = savedTime;
-          if (wasPlaying) audio.play().catch(() => btn.classList.remove("playing"));
-        });
-
-        btn.addEventListener("click", () => {
-          if (audio.paused) audio.play(); else audio.pause();
-        });
-
-        audio.addEventListener("play", () => {
-          btn.classList.add("playing");
-          localStorage.setItem(KEY_PLAYING, "1");
-        });
-        audio.addEventListener("pause", () => {
-          btn.classList.remove("playing");
-          localStorage.setItem(KEY_PLAYING, "0");
-        });
-
-        setInterval(() => {
-          if (!audio.paused) localStorage.setItem(KEY_TIME, audio.currentTime.toString());
-        }, 2000);
-
-        window.addEventListener("pagehide", () => {
-          localStorage.setItem(KEY_TIME, audio.currentTime.toString());
-        });
       }
 
       if (form) {
