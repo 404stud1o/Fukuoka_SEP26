@@ -23,7 +23,7 @@
   --tue: #8FC4E8;
   --wed: #DDB2E6;
 
-  --radius: 3px;
+  --radius: 5px;
   --shadow: 0 1px 0 rgba(27,36,48,0.06), 0 6px 16px rgba(27,36,48,0.06);
 }
 
@@ -146,7 +146,7 @@ hr {
   padding: 6px;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 35px;
   width: fit-content;
   max-width: 100%;
   margin-left: auto;
@@ -546,6 +546,239 @@ footer.foot {
   color: var(--ink-soft);
   opacity: 0.75;
 }
+
+/* ---------- Weather -------------- */
+.weather-panel { margin-top: 36px; }
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.weather-city {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 16px 14px;
+}
+
+.wx-city-name {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 11.5px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass-dark);
+  margin-bottom: 10px;
+}
+
+.wx-days {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.wx-days[data-loading] {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.wx-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.wx-day-label {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.wx-temp {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Currency Converter */
+.converter-panel { margin-top: 36px; }
+
+.converter-card {
+  max-width: 360px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+
+.conv-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.conv-row label {
+  width: 46px;
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--brass-dark);
+}
+
+.conv-row input {
+  flex: 1;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 15px;
+}
+
+.conv-row input:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--brass-tint);
+}
+
+.conv-swap {
+  text-align: center;
+  color: var(--brass);
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.conv-rate {
+  text-align: center;
+  margin: 14px 0 0;
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* Earthquakes Info */
+.quake-panel { margin-top: 36px; }
+
+.quake-list {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quake-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease;
+}
+
+.quake-row:hover { transform: translateY(-1px); }
+
+.quake-mag {
+  flex-shrink: 0;
+  width: 46px;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: var(--radius);
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 12.5px;
+  font-weight: 1000;
+  color: #26190A;
+}
+
+.quake-mag.quake-low  { background: var(--mon); }
+.quake-mag.quake-mid  { background: var(--sat); }
+.quake-mag.quake-high { background: var(--fri); }
+
+.quake-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.quake-place {
+  font-size: 14px;
+  font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quake-meta {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.quake-empty {
+  text-align: center;
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.quake-source {
+  text-align: center;
+  margin: 12px 0 0;
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+.aftershock-box {
+  max-width: 640px;
+  margin: 16px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+
+.af-source {
+  font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+.af-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0;
+  border-top: 1px dashed var(--line);
+  font-size: 12.5px;
+}
+
+.af-row:first-of-type { border-top: none; }
+
+.af-label { font-weight: 600; color: var(--rule); }
+.af-probs { font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif; color: var(--ink-soft); }
 
 @media (max-width: 640px) {
   .entry-grid { grid-template-columns: repeat(2, 1fr); }
