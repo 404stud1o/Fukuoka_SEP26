@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes" />
+
   <title>福岡夏日の旅 Fukuoka Summer Trip 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="/manifest.json">
-  
-  <!-- iOS Safari specific tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
-  <meta name="apple-mobile-web-app-title" content="福岡夏日の旅2026">
-  <link rel="apple-touch-icon" href="favicon-jp.png">
+
+  <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
+  <link rel="stylesheet" href="node_modules/pwa-add-to-homescreen/dist/add-to-homescreen.min.css" />
+  <script src="node_modules/pwa-add-to-homescreen/dist/add-to-homescreen_zh_HK.min.js"></script>
+
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon-jp.png">
+  <link rel="icon" type="image/x-icon" href="apple-touch-icon.png">
 </head>
 
 <body>
   <div class="wrap">
-
     <h1 class="page-title">福岡夏日の旅2026</h1>
     <h2 class="page-subtitle">Fukuoka Summer Trip 2026</h2>
 
@@ -98,6 +97,32 @@
         '<div class="hc-day">' + m.full + '</div>' +
         '<div class="hc-date">' + m.date + ' ' + m.month + '</div>';
       list.appendChild(a);
+    });
+  </script>
+
+  <!-- Mobile Web App JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    window.AddToHomeScreenInstance = window.AddToHomeScreen({
+      appName: '福岡夏日の旅2026',                           // Name of the app.
+                                                            // Required.
+      appNameDisplay: 'standalone',                         // If set to 'standalone' (the default), the app name will be diplayed
+                                                            // on it's own, beneath the "Install App" header. If set to 'inline', the
+                                                            // app name will be displayed on a single line like "Install MyApp"
+                                                            // Optional. Default 'standalone'
+      appIconUrl: 'apple-touch-icon.png',                   // App icon link (square, at least 40 x 40 pixels).
+                                                            // Required.
+      assetUrl: 'node_modules/pwa-add-to-homescreen/dist/assets/img/',  // Link to directory of library image assets.
+                                                            // Required.
+      maxModalDisplayCount: -1,                             // If set, the modal will only show this many times.
+                                                            // [Optional] Default: -1 (no limit).  (Debugging: Use this.clearModalDisplayCount() to reset the count)
+      displayOptions:{ showMobile: true, showDesktop: true }, // show on mobile/desktop [Optional] Default: show everywhere
+      allowClose: true,                                       // allow the user to close the modal by tapping outside of it [Optional. Default: true]
+      showArrow: true,                                        // show the bouncing arrow on the modal [Optional. Default: true] (highly recommend leaving at true as drastically affects install rates)
+    });
+
+    ret = window.AddToHomeScreenInstance.show('zh');        // show "add-to-homescreen" instructions to user, or do nothing if already added to homescreen
+                                                            // [optional] language.  If left blank, then language is auto-decided from (1) URL param locale='..' (e.g. /?locale=es) (2) Browser language settings
     });
   </script>
 </body>
