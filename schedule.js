@@ -17,7 +17,7 @@
     { file: "wed02sep.html", short: "WED 02", color: "var(--wed)" },
   ];
 
-  const START_HOUR = 7;   // grid starts 07:00
+  const START_HOUR = 9;   // grid starts 09:00
   const END_HOUR = 24;    // grid ends 24:00
   const PX_PER_MIN = 2;   // 120px per hour — keep in sync with style.css .ruler-hour height
 
@@ -307,8 +307,59 @@
       }
 
       paint();
+      initAudio();
     });
   }
 
-  window.TripSchedule = { init, DAYS, renderNav };
+  function initAudio() {
+    if (document.getElementById("bgAudioBtn")) return; // already added on this page
+
+    const KEY_TIME = "trip-audio-time";
+    const KEY_PLAYING = "trip-audio-playing";
+
+    const audio = document.createElement("audio");
+    audio.src = "/terence_boundless.mp3";
+    audio.loop = true;
+    audio.preload = "auto";
+    document.body.appendChild(audio);
+
+    const btn = document.createElement("button");
+    btn.id = "bgAudioBtn";
+    btn.className = "bg-audio-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Toggle background music");
+    btn.textContent = "\u266A";
+    document.body.appendChild(btn);
+
+    const savedTime = parseFloat(localStorage.getItem(KEY_TIME) || "0");
+    const wasPlaying = localStorage.getItem(KEY_PLAYING) === "1";
+
+    audio.addEventListener("loadedmetadata", () => {
+      if (savedTime && savedTime < audio.duration) audio.currentTime = savedTime;
+      if (wasPlaying) audio.play().catch(() => btn.classList.remove("playing"));
+    });
+
+    btn.addEventListener("click", () => {
+      if (audio.paused) audio.play(); else audio.pause();
+    });
+
+    audio.addEventListener("play", () => {
+      btn.classList.add("playing");
+      localStorage.setItem(KEY_PLAYING, "1");
+    });
+    audio.addEventListener("pause", () => {
+      btn.classList.remove("playing");
+      localStorage.setItem(KEY_PLAYING, "0");
+    });
+
+    setInterval(() => {
+      if (!audio.paused) localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+    }, 2000);
+
+    window.addEventListener("pagehide", () => {
+      localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+    });
+  }
+
+  window.TripSchedule = { init, DAYS, renderNav, initAudio };
 })();

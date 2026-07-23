@@ -780,6 +780,35 @@ footer.foot {
 .af-label { font-weight: 600; color: var(--rule); }
 .af-probs { font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif; color: var(--ink-soft); }
 
+/* Media Play */
+.bg-audio-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--brass-dark);
+  background: var(--brass);
+  color: #26190A;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  z-index: 50;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.bg-audio-btn:hover { background: var(--brass-dark); color: #fff; }
+.bg-audio-btn:active { transform: translateY(1px); }
+
+.bg-audio-btn.playing { animation: bg-audio-pulse 1.8s ease-in-out infinite; }
+
+@keyframes bg-audio-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(173,132,70,0.5), var(--shadow); }
+  50% { box-shadow: 0 0 0 8px rgba(173,132,70,0), var(--shadow); }
+}
+
 @media (max-width: 640px) {
   .entry-grid { grid-template-columns: repeat(2, 1fr); }
   .entry-grid .field.wide { grid-column: span 2; }
