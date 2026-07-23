@@ -256,6 +256,56 @@
         paint();
       }
 
+      function initAudio() {
+        if (document.getElementById("bgAudioBtn")) return; // already added on this page
+
+        const KEY_TIME = "trip-audio-time";
+        const KEY_PLAYING = "trip-audio-playing";
+
+        const audio = document.createElement("audio");
+        audio.src = "/terence_boundless.mp3";
+        audio.loop = true;
+        audio.preload = "auto";
+        document.body.appendChild(audio);
+
+        const btn = document.createElement("button");
+        btn.id = "bgAudioBtn";
+        btn.className = "bg-audio-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Toggle background music");
+        btn.textContent = "\u266A";
+        document.body.appendChild(btn);
+
+        const savedTime = parseFloat(localStorage.getItem(KEY_TIME) || "0");
+        const wasPlaying = localStorage.getItem(KEY_PLAYING) === "1";
+
+        audio.addEventListener("loadedmetadata", () => {
+          if (savedTime && savedTime < audio.duration) audio.currentTime = savedTime;
+          if (wasPlaying) audio.play().catch(() => btn.classList.remove("playing"));
+        });
+
+        btn.addEventListener("click", () => {
+          if (audio.paused) audio.play(); else audio.pause();
+        });
+
+        audio.addEventListener("play", () => {
+          btn.classList.add("playing");
+          localStorage.setItem(KEY_PLAYING, "1");
+        });
+        audio.addEventListener("pause", () => {
+          btn.classList.remove("playing");
+          localStorage.setItem(KEY_PLAYING, "0");
+        });
+
+        setInterval(() => {
+          if (!audio.paused) localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+        }, 2000);
+
+        window.addEventListener("pagehide", () => {
+          localStorage.setItem(KEY_TIME, audio.currentTime.toString());
+        });
+      }
+
       if (form) {
         form.addEventListener("submit", (e) => {
           e.preventDefault();
@@ -308,56 +358,6 @@
 
       paint();
       initAudio();
-    });
-  }
-
-  function initAudio() {
-    if (document.getElementById("bgAudioBtn")) return; // already added on this page
-
-    const KEY_TIME = "trip-audio-time";
-    const KEY_PLAYING = "trip-audio-playing";
-
-    const audio = document.createElement("audio");
-    audio.src = "/terence_boundless.mp3";
-    audio.loop = true;
-    audio.preload = "auto";
-    document.body.appendChild(audio);
-
-    const btn = document.createElement("button");
-    btn.id = "bgAudioBtn";
-    btn.className = "bg-audio-btn";
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Toggle background music");
-    btn.textContent = "\u266A";
-    document.body.appendChild(btn);
-
-    const savedTime = parseFloat(localStorage.getItem(KEY_TIME) || "0");
-    const wasPlaying = localStorage.getItem(KEY_PLAYING) === "1";
-
-    audio.addEventListener("loadedmetadata", () => {
-      if (savedTime && savedTime < audio.duration) audio.currentTime = savedTime;
-      if (wasPlaying) audio.play().catch(() => btn.classList.remove("playing"));
-    });
-
-    btn.addEventListener("click", () => {
-      if (audio.paused) audio.play(); else audio.pause();
-    });
-
-    audio.addEventListener("play", () => {
-      btn.classList.add("playing");
-      localStorage.setItem(KEY_PLAYING, "1");
-    });
-    audio.addEventListener("pause", () => {
-      btn.classList.remove("playing");
-      localStorage.setItem(KEY_PLAYING, "0");
-    });
-
-    setInterval(() => {
-      if (!audio.paused) localStorage.setItem(KEY_TIME, audio.currentTime.toString());
-    }, 2000);
-
-    window.addEventListener("pagehide", () => {
-      localStorage.setItem(KEY_TIME, audio.currentTime.toString());
     });
   }
 
