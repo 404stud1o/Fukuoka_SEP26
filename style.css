@@ -611,7 +611,7 @@ footer.foot {
 .converter-panel { margin-top: 36px; }
 
 .converter-card {
-  max-width: 360px;
+  max-width: 480px;
   margin: 0 auto;
   background: var(--card);
   border: 1px solid var(--line);
@@ -621,13 +621,13 @@ footer.foot {
 }
 
 .conv-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
   align-items: center;
   gap: 12px;
 }
 
 .conv-row label {
-  width: 46px;
   font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -636,14 +636,14 @@ footer.foot {
 }
 
 .conv-row input {
-  flex: 1;
+  min-width: auto;
   padding: 9px 10px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
   color: var(--ink);
   font-family: "IBM Plex Mono", "Noto Sans JP", monospace, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .conv-row input:focus {
