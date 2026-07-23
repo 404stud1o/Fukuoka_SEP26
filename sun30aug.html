@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- iOS Safari specific tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
+  <meta name="apple-mobile-web-app-title" content="福岡夏日の旅2026">
+  <link rel="apple-touch-icon" href="favicon-jp.png">
   <link rel="icon" type="image/x-icon" href="favicon-jp.png">
 </head>
 
@@ -39,10 +46,9 @@
     const EVENTS_DEFAULT = [
       { title: "Pick-up from Car Rental", start: "10:00", end: "10:45", location: "(TBC)", mapsUrl: "" },
       { title: "Drive to 糸島 Itoshima", start: "10:45", end: "11:30", location: "", mapsUrl: "" },
-      { title: "Lunch (TBC)", start: "11:30", end: "13:00", location: "", mapsUrl: "" },
+      { title: "Lunch - 海鮮燒烤", start: "12:00", end: "13:30", location: "浜焼き白浜家 牡蠣小屋・海鮮丼 バーベキュー Shirahamaya: Oyster, Sashimi & Grill", mapsUrl: "https://www.google.com/maps/place/Shirahamaya/@33.5886349,130.1114064,16.39z/data=!4m6!3m5!1s0x3541e79cc8d595c7:0x1e90bc325066c470!8m2!3d33.5896971!4d130.1078547!16s%2Fg%2F11f3rng6zj?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" },
       { title: "Attractions (TBC)", start: "13:00", end: "19:30", location: "", mapsUrl: "" },
-      { title: "Dinner - 海鮮燒烤", start: "19:30", end: "21:00", location: "浜焼き白浜家 牡蠣小屋・海鮮丼 バーベキュー Shirahamaya: Oyster, Sashimi & Grill", mapsUrl: "https://www.google.com/maps/place/Shirahamaya/@33.5886349,130.1114064,16.39z/data=!4m6!3m5!1s0x3541e79cc8d595c7:0x1e90bc325066c470!8m2!3d33.5896971!4d130.1078547!16s%2Fg%2F11f3rng6zj?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" },
-      { title: "Drive back to 福岡 Fukuoka", start: "21:00", end: "21:30", location: "", mapsUrl: "" },
+      { title: "Drive back to 福岡 Fukuoka", start: "16:00", end: "21:30", location: "", mapsUrl: "" },
     ];
 
     window.TripSchedule.init({
