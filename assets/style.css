@@ -50,6 +50,10 @@ a { color: inherit; }
   padding: 40px 20px 80px;
 }
 
+section {
+  margin: 36px 0px 0px 0px;
+}
+
 /* ---------- Header & Text ---------- */
 
 .page-title {
@@ -85,7 +89,7 @@ a { color: inherit; }
 
 .page-h3 {
   text-align: center;
-  margin: 0 0 8px;
+  margin: 0 0 8px 0;
   font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -95,34 +99,38 @@ a { color: inherit; }
 
 .index-p  {
   text-align: center;
-  margin: 0 0 12px;
+  margin: 0 0 0 0px;
   font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
   font-weight: bold; 
   font-display: block;
   letter-spacing: 0.01em;
+  line-height: 1.1em;
   color: var(--ink);
+  padding: 0px 0px 12px 0px;
 }
 
 .index-text-a  {
   text-align: center;
-  margin: 0 0 4px;
+  margin: 0 0 0 0px;
   font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
   font-weight: bold; 
   font-display: block;
   letter-spacing: 0.01em;
   color: var(--ink);
+  padding: 0px 0px 0px 0px;
 }
 
 .address-a  {
   text-align: center;
-  margin: 0 0 8px;
+  margin: 0 0 0 0px;
   font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
   font-size: 11px;
   font-weight: bold; 
   font-display: block;
   text-decoration: none;
-  letter-spacing: 0.01em;
+  line-height: 0.75em;
   color: var(--ink-soft);
+  padding: 12px 0px 0px 0px;
 }
 
 hr {
@@ -131,8 +139,64 @@ hr {
   background: linear-gradient(to bottom right, var(--brass), var(--brass-tint));
   border-radius: 999px;
   width: 90%;
-  margin: 28px auto;
+  margin: 28px auto 14px auto;
   overflow: visible;
+}
+
+br {
+  text-decoration: none;
+}
+
+/* ---------- Locations Grid ---------- */
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0px 0px 0px 0px;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 6px;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0px 0px 0px 0px;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.location-card {
+  background: transparent;
+  border: transparent;
+  border-radius: var(--radius);
+  box-shadow: none;
+  padding: 12px 6px 0px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-card.location-map {
+  padding: 0px 0px 0px 0px;
+  overflow: hidden;
+  min-height: 180px;
+  border: 1.5px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 960px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+  .location-card.location-map {
+    height: 220px;
+    border-radius: var(--radius);
+  }
 }
 
 /* ---------- Nav ---------- */
@@ -557,7 +621,6 @@ footer.foot {
 }
 
 /* ---------- Weather -------------- */
-.weather-panel { margin-top: 36px; }
 
 .weather-grid {
   display: grid;
@@ -617,8 +680,6 @@ footer.foot {
 }
 
 /* Currency Converter */
-.converter-panel { margin-top: 36px; }
-
 .converter-card {
   max-width: 480px;
   margin: 0 auto;
@@ -679,7 +740,6 @@ footer.foot {
 }
 
 /* Earthquakes Info */
-.quake-panel { margin-top: 36px; }
 
 .quake-list {
   max-width: 640px;
