@@ -108,7 +108,7 @@
     const KEY_PLAYING = "trip-audio-playing";
 
     const audio = document.createElement("audio");
-    audio.src = "terence_boundless_instr.mp3";
+    audio.src = "assets/terence_boundless_instr.mp3";
     audio.loop = true;
     audio.preload = "auto";
     document.body.appendChild(audio);
@@ -117,7 +117,7 @@
     btn.id = "bgAudioBtn";
     btn.className = "bg-audio-btn";
     btn.type = "button";
-    btn.setAttribute("aria-label", "Play Background Music: 林家謙 Terence Lam &middot; 夏日之子 Boundless");
+    btn.setAttribute("aria-label", "Play BGM: 林家謙 Terence Lam &middot; 夏日之子 Boundless");
     btn.textContent = "\u266A";
     document.body.appendChild(btn);
 
@@ -169,7 +169,7 @@
     });
   }
 
-  // ---------------- Render events ----------------
+  // ---------------- `Render` events ----------------
 
   function renderEvents(layerEl, events, dayColorVar, onEdit, onDelete) {
     layerEl.innerHTML = "";
@@ -207,11 +207,18 @@
       title.textContent = ev.title;
       card.appendChild(title);
 
+      if (ev.desc) {
+        const desc = document.createElement("p");
+        desc.className = "ev-desc";
+        desc.textContent = ev.desc;
+        card.appendChild(desc);
+      }
+      
       const time = document.createElement("div");
       time.className = "ev-time";
       time.textContent = fmt(ev.start) + " \u2013 " + fmt(ev.end);
       card.appendChild(time);
-
+      
       if (ev.location || ev.mapsUrl) {
         const meta = document.createElement("div");
         meta.className = "ev-meta";
